@@ -9,7 +9,7 @@ define(['require', 'knockout', 'knockoutModel'], function(require, ko) {
       write: function(newval) {
         val.splice(0);
 
-        if (newval) {
+        if (Array.isArray(newval)) {
           for (var a = 0; a < newval.length; a++) {
             val.push(ensure(newval[a]));
           }
@@ -97,7 +97,7 @@ define(['require', 'knockout', 'knockoutModel'], function(require, ko) {
       var mod = koModel.create(ctor);
       mod(data);
       return mod();
-    };
+    }
 
     function notify() {
       com.notifySubscribers();
